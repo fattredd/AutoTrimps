@@ -300,7 +300,7 @@ function autoLevelEquipment() {
             if (kids.length == 3) {
                 $equipName.appendChild(document.createElement('span',className='eff'));
             }
-            kids[3].innerHTML = evaluation.Factor.toFixed(6);
+            kids[3].innerHTML = ' (' + (100 * evaluation.Factor).toFixed(2) + ')';
 
             if (Best[BKey].Factor === 0 || Best[BKey].Factor < evaluation.Factor) {
                 Best[BKey].Factor = evaluation.Factor;
