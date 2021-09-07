@@ -231,6 +231,15 @@ function postBuy3() {
     game.global.lastCustomAmt = preBuyCustomLast2;
 }
 
+function getOrder(value) {
+    var order = 0;
+    while (value < 1) {
+        value *= 10;
+        order++;
+    }
+    return Math.trunc(value).toString() + 'e' + order;
+}
+
 function autoLevelEquipment() {
 
     var gearamounttobuy = (getPageSetting('gearamounttobuy') > 0) ? getPageSetting('gearamounttobuy') : 1;
@@ -300,7 +309,7 @@ function autoLevelEquipment() {
             if (kids.length == 3) {
                 $equipName.appendChild(document.createElement('span',className='eff'));
             }
-            kids[3].innerHTML = ' (' + (100 * evaluation.Factor).toFixed(2) + ')';
+            kids[3].innerHTML = ' (' + getOrder(evaluation.Factor) + ')';
 
             if (Best[BKey].Factor === 0 || Best[BKey].Factor < evaluation.Factor) {
                 Best[BKey].Factor = evaluation.Factor;
