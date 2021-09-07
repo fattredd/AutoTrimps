@@ -296,7 +296,11 @@ function autoLevelEquipment() {
             var BKey = equip.Stat + equip.Resource;
             
             // TODO show efficiency of equipment on gui
-            $equipName.appendChild(document.createTextNode(" (" + evaluation.Factor.toFixed(2) + ")"));
+            var kids = $equipName.children;
+            if (kids.length == 3) {
+                $equipName.appendChild(document.createElement('span',className='eff'));
+            }
+            kids[3].innerHTML = evaluation.Factor.toFixed(6);
 
             if (Best[BKey].Factor === 0 || Best[BKey].Factor < evaluation.Factor) {
                 Best[BKey].Factor = evaluation.Factor;
